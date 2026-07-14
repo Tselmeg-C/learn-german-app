@@ -58,3 +58,62 @@ jobs:
 
       - name: Test
         run: uv run pytest -q
+
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npx tsc -b --noEmit
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+  # The web client's types are generated from the API's OpenAPI document. If someone
+  # changes a response model without regenerating, this fails here rather than at
+  # runtime in a browser.
+  api-types-are-current:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: api/uv.lock
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Regenerate types from the live schema
+        working-directory: api
+        run: |
+          uv sync --locked
+          uv run python -m lgapp.openapi > ../web/openapi.json
+
+      - name: Fail if the committed types are stale
+        working-directory: web
+        run: |
+          npx openapi-typescript openapi.json -o src/lib/api-types.ts
+          git diff --exit-code -- openapi.json src/lib/api-types.ts \
+            || { echo "::error::API types are stale. Run 'npm run gen:api' in web/ and commit."; exit 1; }

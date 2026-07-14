@@ -9,3 +9,6 @@ node_modules/
 dist/
 dev-dist/
 .DS_Store
+.env.local
+test-results/
+playwright-report/

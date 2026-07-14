@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+
+html {
+  color-scheme: dark;
+  /* iOS: stop the page rubber-banding under the review controls. */
+  overscroll-behavior-y: none;
+}
+
+body {
+  @apply bg-slate-950 text-slate-100 antialiased;
+}
+
+/* Respect the notch / home indicator when installed to the home screen. */
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
