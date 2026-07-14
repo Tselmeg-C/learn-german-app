@@ -2,7 +2,8 @@
 name = "lgapp"
 version = "0.1.0"
 description = "German learning app — API"
-readme = "../README.md"
+# No `readme`: it would have to point at ../README.md, which is outside the Docker build
+# context, and this package is never published anywhere that would show it.
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.120",

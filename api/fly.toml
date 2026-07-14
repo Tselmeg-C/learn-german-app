@@ -1,0 +1,47 @@
+﻿# Fly.io configuration for the API.
+#
+# Set the app name and region to taste, then:
+#   fly launch --no-deploy --copy-config
+#   fly secrets set LGAPP_DATABASE_URL=... LGAPP_SUPABASE_PROJECT_REF=...
+#   fly deploy
+
+app = "learn-german-api"
+primary_region = "fra"  # Close to the learners; adjust as needed.
+
+[build]
+  dockerfile = "Dockerfile"
+
+[deploy]
+  # Migrations run once per release rather than on every machine boot — otherwise each
+  # machine would race the others to migrate the same database.
+  release_command = "alembic upgrade head"
+  strategy = "rolling"
+
+[env]
+  LGAPP_ENV = "production"
+  LGAPP_LOG_LEVEL = "INFO"
+  # Small per-process pool: Supabase's Supavisor pooler owns the real connection fan-in,
+  # and a large pool per machine is exactly how you exhaust Postgres when scaling out.
+  LGAPP_DB_POOL_SIZE = "5"
+  LGAPP_DB_MAX_OVERFLOW = "5"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = "suspend"
+  auto_start_machines = true
+  # Zero would make the first request of the day pay a cold start. At 100 users one
+  # always-warm machine is cheap; raise this when traffic justifies it.
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    grace_period = "10s"
+    interval = "30s"
+    method = "GET"
+    timeout = "5s"
+    # readyz, not healthz: a machine that cannot reach Postgres must not take traffic.
+    path = "/readyz"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
