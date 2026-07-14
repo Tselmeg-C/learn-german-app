@@ -13,7 +13,11 @@ from lgapp.models import Card, CardState, Deck, User, UserCard, UserDeck
 
 
 async def make_user(session: AsyncSession, **kwargs: object) -> User:
-    user = User(id=kwargs.pop("id", uuid.uuid4()), email="learner@example.com", **kwargs)
+    user = User(
+        id=kwargs.pop("id", uuid.uuid4()),
+        email=kwargs.pop("email", "learner@example.com"),
+        **kwargs,
+    )
     session.add(user)
     await session.flush()
     return user

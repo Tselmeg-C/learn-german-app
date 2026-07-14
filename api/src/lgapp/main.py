@@ -11,7 +11,7 @@ from lgapp.config import Settings, get_settings
 from lgapp.db import dispose_engine
 from lgapp.errors import register_error_handlers
 from lgapp.logging import configure_logging, request_id_var
-from lgapp.routers import health
+from lgapp.routers import decks, health, reviews, stats
 
 access_log = logging.getLogger("lgapp.access")
 
@@ -76,6 +76,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     register_error_handlers(app)
     app.include_router(health.router)
+    app.include_router(decks.router)
+    app.include_router(reviews.router)
+    app.include_router(stats.router)
     return app
 
 
