@@ -1,0 +1,51 @@
+external_id,german,english,part_of_speech,article,plural,example_de,example_en,tags,position
+haus,Haus,house,noun,das,Häuser,Das Haus ist groß.,The house is big.,home|a1,1
+frau,Frau,woman,noun,die,Frauen,Die Frau liest ein Buch.,The woman is reading a book.,people|a1,2
+mann,Mann,man,noun,der,Männer,Der Mann arbeitet hier.,The man works here.,people|a1,3
+kind,Kind,child,noun,das,Kinder,Das Kind spielt im Garten.,The child plays in the garden.,people|a1,4
+wasser,Wasser,water,noun,das,,Ich trinke gern Wasser.,I like drinking water.,food|a1,5
+brot,Brot,bread,noun,das,Brote,Wir kaufen frisches Brot.,We buy fresh bread.,food|a1,6
+apfel,Apfel,apple,noun,der,Äpfel,Der Apfel schmeckt süß.,The apple tastes sweet.,food|a1,7
+milch,Milch,milk,noun,die,,Die Milch ist kalt.,The milk is cold.,food|a1,8
+kaffee,Kaffee,coffee,noun,der,,Ich trinke Kaffee am Morgen.,I drink coffee in the morning.,food|a1,9
+stadt,Stadt,city,noun,die,Städte,Die Stadt ist sehr alt.,The city is very old.,places|a1,10
+strasse,Straße,street,noun,die,Straßen,Die Straße ist lang.,The street is long.,places|a1,11
+schule,Schule,school,noun,die,Schulen,Die Schule beginnt um acht.,School starts at eight.,places|a1,12
+buch,Buch,book,noun,das,Bücher,Das Buch ist interessant.,The book is interesting.,objects|a1,13
+tisch,Tisch,table,noun,der,Tische,Der Tisch steht in der Küche.,The table is in the kitchen.,objects|a1,14
+stuhl,Stuhl,chair,noun,der,Stühle,Der Stuhl ist bequem.,The chair is comfortable.,objects|a1,15
+tuer,Tür,door,noun,die,Türen,Bitte schließ die Tür.,Please close the door.,objects|a1,16
+fenster,Fenster,window,noun,das,Fenster,Das Fenster ist offen.,The window is open.,objects|a1,17
+auto,Auto,car,noun,das,Autos,Das Auto fährt schnell.,The car drives fast.,transport|a1,18
+zug,Zug,train,noun,der,Züge,Der Zug hat Verspätung.,The train is delayed.,transport|a1,19
+hund,Hund,dog,noun,der,Hunde,Der Hund schläft.,The dog is sleeping.,animals|a1,20
+katze,Katze,cat,noun,die,Katzen,Die Katze ist klein.,The cat is small.,animals|a1,21
+tag,Tag,day,noun,der,Tage,Der Tag war lang.,The day was long.,time|a1,22
+nacht,Nacht,night,noun,die,Nächte,Die Nacht ist ruhig.,The night is quiet.,time|a1,23
+jahr,Jahr,year,noun,das,Jahre,Das Jahr geht zu Ende.,The year is coming to an end.,time|a1,24
+zeit,Zeit,time,noun,die,Zeiten,Ich habe keine Zeit.,I have no time.,time|a1,25
+sein,sein,to be,verb,,,Ich bin müde.,I am tired.,verbs|a1,26
+haben,haben,to have,verb,,,Wir haben Hunger.,We are hungry.,verbs|a1,27
+gehen,gehen,to go,verb,,,Ich gehe nach Hause.,I am going home.,verbs|a1,28
+kommen,kommen,to come,verb,,,Sie kommt aus Berlin.,She comes from Berlin.,verbs|a1,29
+machen,machen,to do / to make,verb,,,Was machst du?,What are you doing?,verbs|a1,30
+sehen,sehen,to see,verb,,,Ich sehe dich morgen.,I will see you tomorrow.,verbs|a1,31
+essen,essen,to eat,verb,,,Wir essen um sieben.,We eat at seven.,verbs|a1,32
+trinken,trinken,to drink,verb,,,Er trinkt Tee.,He drinks tea.,verbs|a1,33
+sprechen,sprechen,to speak,verb,,,Sprichst du Deutsch?,Do you speak German?,verbs|a1,34
+lesen,lesen,to read,verb,,,Sie liest eine Zeitung.,She is reading a newspaper.,verbs|a1,35
+schreiben,schreiben,to write,verb,,,Ich schreibe einen Brief.,I am writing a letter.,verbs|a1,36
+arbeiten,arbeiten,to work,verb,,,Er arbeitet in Hamburg.,He works in Hamburg.,verbs|a1,37
+wohnen,wohnen,to live / to reside,verb,,,Wir wohnen in München.,We live in Munich.,verbs|a1,38
+verstehen,verstehen,to understand,verb,,,Ich verstehe das nicht.,I don't understand that.,verbs|a1,39
+lernen,lernen,to learn,verb,,,Sie lernt Deutsch.,She is learning German.,verbs|a1,40
+gut,gut,good,adjective,,,Das Essen ist gut.,The food is good.,adjectives|a1,41
+schlecht,schlecht,bad,adjective,,,Das Wetter ist schlecht.,The weather is bad.,adjectives|a1,42
+gross,groß,big / tall,adjective,,,Der Baum ist groß.,The tree is tall.,adjectives|a1,43
+klein,klein,small,adjective,,,Die Wohnung ist klein.,The flat is small.,adjectives|a1,44
+neu,neu,new,adjective,,,Das Auto ist neu.,The car is new.,adjectives|a1,45
+alt,alt,old,adjective,,,Mein Fahrrad ist alt.,My bicycle is old.,adjectives|a1,46
+schnell,schnell,fast,adjective,,,Der Zug ist schnell.,The train is fast.,adjectives|a1,47
+heute,heute,today,adverb,,,Heute regnet es.,It is raining today.,adverbs|a1,48
+morgen,morgen,tomorrow,adverb,,,Morgen fahre ich weg.,I am leaving tomorrow.,adverbs|a1,49
+immer,immer,always,adverb,,,Er kommt immer zu spät.,He is always late.,adverbs|a1,50
