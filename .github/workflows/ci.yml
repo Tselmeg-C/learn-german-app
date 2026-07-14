@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  api:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: api
+
+    # A real Postgres, not SQLite — the importer and review sync rely on Postgres-specific
+    # upserts, so testing against anything else would test code we don't ship.
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: lgapp
+          POSTGRES_PASSWORD: lgapp
+          POSTGRES_DB: lgapp
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U lgapp -d lgapp"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      LGAPP_ENV: ci
+      LGAPP_DATABASE_URL: postgresql+asyncpg://lgapp:lgapp@localhost:5432/lgapp
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: api/uv.lock
+
+      - run: uv sync --locked
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Format
+        run: uv run ruff format --check .
+
+      - name: Typecheck
+        run: uv run mypy src
+
+      - name: Test
+        run: uv run pytest -q
